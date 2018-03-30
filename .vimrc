@@ -11,7 +11,8 @@ if has("syntax")
     syntax on 
 	syntax enable
 endif
-colorscheme desert 
+colorscheme torte "colortheme for ubuntu on windows
+"colorscheme torte "colortheme for ubuntu on macbook
 
 " detect file type
 filetype on
@@ -48,17 +49,26 @@ set showmatch
 set linebreak     
 set whichwrap=b,s,<,>,[,] 
 "set hidden " Hide buffers when they are abandoned
-set mouse=a            
+"set mouse=a
 set number            
 "set previewwindow   
 set history=50      
 
+set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
+set termencoding=utf-8
+set encoding=utf-8
 
 set laststatus=2 
 set ruler            
 
 set showcmd   
 set showmode 
+
+"-- curson setting --
+set cursorline "set cursor highlight for row
+"set cursorcolumn "set cursor hightlight for column
+"hi CursorColumn cterm=NONE ctermbg=green ctermfg=white guibg=darkred guifg=white
+"hi CursorLine   cterm=NONE ctermbg=DarkMagenta ctermfg=Black guibg=darkred guifg=white
 
 "--find setting--
 set incsearch       
@@ -100,7 +110,6 @@ let Tlist_Process_File_Always=1
 let Tlist_Inc_Winwidth=0
 
 
-
 "-- WinManager setting --
 let g:winManagerWindowLayout='FileExplorer|TagList' 
 "let g:persistentBehaviour=0 
@@ -130,6 +139,8 @@ imap <F7> <ESC>:make<CR><CR><CR> :copen<CR><CR>
 imap <F8> <ESC>:cp<CR>
 imap <F9> <ESC>:cn<CR>
 
+
+"-- Vundle setting --
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -153,6 +164,7 @@ Plugin 'vim-scripts/echofunc.vim'
 Plugin 'vim-scripts/minibufexplorerpp'
 Plugin 'vim-scripts/cscope.vim'
 Plugin 'vim-scripts/AutoComplPop'
+Plugin 'vim-scripts/winmanager'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -163,7 +175,6 @@ Plugin 'FuzzyFinder'
 " Plugin 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (i.e. when working on your own plugin)
 " Plugin 'file:///home/jack/.vim/plugin'
-" ...
 
 filetype plugin indent on     " required
 " To ignore plugin indent changes, instead use:
