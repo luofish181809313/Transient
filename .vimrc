@@ -54,6 +54,7 @@ set number
 "set previewwindow   
 set history=50      
 
+"-- encoding setting --
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
 set termencoding=utf-8
 set encoding=utf-8
@@ -68,7 +69,7 @@ set showmode
 set cursorline "set cursor highlight for row
 "set cursorcolumn "set cursor hightlight for column
 "hi CursorColumn cterm=NONE ctermbg=green ctermfg=white guibg=darkred guifg=white
-"hi CursorLine   cterm=NONE ctermbg=DarkMagenta ctermfg=Black guibg=darkred guifg=white
+hi cursorline term=bold cterm=bold guibg=Grey40
 
 "--find setting--
 set incsearch       
@@ -134,11 +135,16 @@ map <F6> :make clean<CR><CR><CR>
 map <F7> :make<CR><CR><CR> :copen<CR><CR>
 map <F8> :cp<CR>
 map <F9> :cn<CR>
-imap <F6> <ESC>:make clean<CR><CR><CR>
-imap <F7> <ESC>:make<CR><CR><CR> :copen<CR><CR>
-imap <F8> <ESC>:cp<CR>
-imap <F9> <ESC>:cn<CR>
+"imap <F6> <ESC>:make clean<CR><CR><CR>
+"imap <F7> <ESC>:make<CR><CR><CR> :copen<CR><CR>
+"imap <F8> <ESC>:cp<CR>
+"imap <F9> <ESC>:cn<CR>
 
+"-- NERDTree setting --
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+map <C-N> :NERDTreeToggle<CR>
 
 "-- Vundle setting --
 filetype off                  " required
@@ -165,6 +171,12 @@ Plugin 'vim-scripts/minibufexplorerpp'
 Plugin 'vim-scripts/cscope.vim'
 Plugin 'vim-scripts/AutoComplPop'
 Plugin 'vim-scripts/winmanager'
+Plugin 'vim-airline/vim-airline'
+Plugin 'scrooloose/nerdtree'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
