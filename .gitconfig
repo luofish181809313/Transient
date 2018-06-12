@@ -1,8 +1,6 @@
 [user]
 	name = Jack Qiu
 	email = luo.fish@hotmail.com
-[http]
-	proxy = http://qif3sgh:Pw+luo5299182942@rb-proxy-de01.bosch.com:8080
 [core]
 	editor = vim
 [color]
